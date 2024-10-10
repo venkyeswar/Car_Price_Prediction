@@ -6,7 +6,7 @@ This project utilizes an **Artificial Neural Network (ANN)** to predict car pric
 
 ## Live Project
 
-[Car Price Prediction App](https://ann-car-price-prediction.onrender.com/)
+[Car Price Prediction App](https://car-price-prediction-xfie.onrender.com/)
 
 ## Technologies Used
 
