@@ -6,7 +6,6 @@ from keras.models import load_model
 import joblib
 model = load_model("model.h5")
 scaler = joblib.load("scaler.pkl")
-
 app = Flask(__name__)
 
 @app.route("/")
