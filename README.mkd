@@ -5,9 +5,9 @@
 
 ## Website Preview
 ### Home Page
-![Homepage](static/website_screenshots/home.png)
+![Homepage](static/website_stuff/home.png)
 ### Results Page
-![Prediction Result](static/website_screenshots/result.png)
+![Prediction Result](static/website_stuff/result.png)
 
 ## Project Overview
 
