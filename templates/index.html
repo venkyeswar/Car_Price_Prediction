@@ -18,30 +18,29 @@
         <h1>Car Price Prediction</h1>
         <div class="form">
             <form action="/predict" method="POST">
+
                 <label for="year">Year:</label>
-                <input type="number" id="year" name="year" required min="2000" max="2023">
+                <input type="number" id="year" name="year" required>
             
-                <label for="present_price">Present Price In Lakhs:</label>
-                <input type="number" id="present_price" name="present_price" step="0.01" required>
-            
-           
+                <label for="present_price"> Present Price:</label>
+                <input type="floatformat" id="present_price" name="present_price"  required>
+
+                <label for="Kms_Driven"> Kms Driven:</label>
+                <input type="number" id="Kms_Driven" name="Kms_Driven"  required>
             
                 <label for="fuel_type">Fuel Type:</label>
                 <select id="fuel_type" name="fuel_type" required>
-                    <option value="Petrol">Petrol</option>
-                    <option value="Diesel">Diesel</option>
+                    <option value="" disabled selected>Select Fuel Type</option>
+                    <option value="1">Petrol</option>
+                    <option value="0">Diesel</option>
                 </select>
-            
-                <label for="seller_type">Seller Type:</label>
-                <select id="seller_type" name="seller_type" required>
-                    <option value="Dealer">Dealer</option>
-                    <option value="Individual">Individual</option>
+
+                <select id="seller" name="seller" required>
+                    <option value="" disabled selected>Select Seller</option>
+                    <option value="1">Individual</option>
+                    <option value="0">Dealer</option>
                 </select>
-            
-                
-            
-                
-            
+
                 <button type="submit">Predict Price</button>
             </form>
         </div>

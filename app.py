@@ -2,9 +2,8 @@ from flask import Flask,render_template,request,redirect
 import pandas as pd
 import numpy as np
 import os
-from keras.models import load_model
 import joblib
-model = load_model("model.h5")
+model = joblib.load("model.pkl")
 scaler = joblib.load("scaler.pkl")
 app = Flask(__name__)
 
@@ -16,35 +15,43 @@ def index():
 def predict():
     
     if request.method == "POST":
-        year = int(request.form.get("year"))
+        year = request.form.get("year")
         present_price = request.form.get("present_price")
+        kms_driven = request.form.get("Kms_Driven")
         fuel_type = request.form.get("fuel_type")
-        seller_type = request.form.get("seller_type")
+        seller_type = request.form.get("seller")
 
-        age1 = 2024-year
-        present_price1=float(present_price)
-        fuel_type1 = 1 if fuel_type == "Petrol" else 0
-        seller_type1 = 1 if seller_type == "Individual" else 0
+        fuel= "Petrol" if fuel_type == "1" else "Diesel"
+        seller = "Individual" if seller_type == "1" else "Dealer"
+
+        year1 =int(year)
+        present_price1 = float(present_price)
+        kms_driven1 = float(kms_driven)
+        fuel_type1 = int(fuel_type)
+        seller_type1 = int(seller_type)
+
 
         data = {
-            "Present_Price":[present_price1],
-            "Seller_Type_Individual":[seller_type1],
+             "Year":[year1],
+             "Present_Price":[present_price1],
+             "Kms_Driven":[kms_driven1],
             "Fuel_Type_Petrol":[fuel_type1],
-            "age":[age1]
+            "Seller_Type_Individual":[seller_type1]
         }
-        data=pd.DataFrame(data,columns=["Present_Price","Seller_Type_Individual","Fuel_Type_Petrol","age"])
+        data=pd.DataFrame(data)
         scaled_df = scaler.transform(data)
         input_data = pd.DataFrame(scaled_df,columns=data.columns)
 
         prediction = model.predict(input_data)[0]
-        prediction = np.round(prediction,2)[0]
+        print(prediction)
+        prediction =np.round(prediction,2)
         
         return render_template("prediction.html",
                                year=year,
-                               age=age1,
                                present_price=present_price,
-                               fuel_type=fuel_type,
-                               seller_type=seller_type,
+                               kms_driven=kms_driven,
+                               fuel_type=fuel,
+                               seller_type=seller,
                                prediction=prediction)
         
 
