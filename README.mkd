@@ -1,44 +1,99 @@
-# Car Price Prediction using ANN
+# Car Price Prediction Project
 
-## Overview
+### Live Website: [Car Price Prediction](https://car-price-prediction-project.onrender.com/)
 
-This project utilizes an **Artificial Neural Network (ANN)** to predict car prices based on features like year, mileage, horsepower, and more. The model has achieved **97% accuracy on the training data** and **98% accuracy on the testing data**. The application is built with **Flask** for the backend and is deployed on **Render** for easy access.
 
-## Live Project
+## Website Preview
+### Home Page
+![Homepage](static/website_screenshots/home.png)
+### Results Page
+![Prediction Result](static/website_screenshots/result.png)
 
-[Car Price Prediction App](https://car-price-prediction-xfie.onrender.com/)
+## Project Overview
 
-## Technologies Used
-
-- **Backend**: Flask (Python)
-- **Frontend**: HTML, CSS
-- **Machine Learning**: TensorFlow (ANN)
-- **Deployment**: Render
+This project predicts the selling price of a used car based on various features such as the car's age, present price, kilometers driven, fuel type, and seller type. It is a web-based application developed using Flask for the backend and deployed on Render. The machine learning models were built using different algorithms such as **Linear Regression**, **Random Forest**, and **Artificial Neural Networks (ANN)**, and the best-performing model was selected for prediction.
 
 ## Features
 
-- Predict car prices based on input features.
-- User-friendly web interface for easy predictions.
-- High accuracy ANN model.
+- Predict the selling price of a used car based on key features.
+- Supports data input through a user-friendly web form.
+- Provides real-time predictions using a pre-trained machine learning model.
+- Scales input data to maintain accuracy and consistency during prediction.
+- Displays the predicted price, along with the input features for reference.
+
+## Dataset
+
+The dataset used for training the machine learning models includes the following features:
+
+- **Year**: The manufacturing year of the car.
+- **Present Price**: The current price of the car.
+- **Kms Driven**: The total kilometers driven by the car.
+- **Fuel Type**: The fuel type of the car (Petrol/Diesel).
+- **Seller Type**: Whether the seller is an individual or a dealer.
+
+The target variable is the **Selling Price** of the car.
+
+## Technologies Used
+
+- **Frontend**: HTML, CSS, Flask templates.
+- **Backend**: Flask web framework.
+- **Machine Learning Models**: 
+  - Linear Regression
+  - Random Forest
+  - Artificial Neural Networks (ANN)
+- **Libraries**: Pandas, NumPy, Scikit-learn, Joblib.
+- **Deployment**: Render.
+
+## Model Building Process
+
+1. **Data Preprocessing**: 
+   - Handled missing values and outliers.
+   - Encoded categorical features (fuel type and seller type).
+   - Scaled the input features using **StandardScaler** to normalize data.
+  
+2. **Model Training**: 
+   - Trained multiple models (Linear Regression, Random Forest, and ANN) to predict car prices.
+   - Evaluated the models based on their accuracy, mean squared error (MSE), and R-squared values.
+   - Chose the best-performing model based on these metrics.
+
+3. **Model Saving**: 
+   - The best model and the scaler were saved using **joblib** for later use in predictions.
+
+## Application Flow
+
+1. **Homepage**:
+   - Users can input the car's details such as year, present price, kilometers driven, fuel type, and seller type.
+   
+2. **Prediction**:
+   - Upon submitting the form, the application processes the data, scales the input using the pre-trained scaler, and predicts the selling price using the saved model.
+   - The predicted price is displayed along with the input values for comparison.
 
 ## How to Run Locally
 
+To run this project locally, follow these steps:
+
 1. Clone the repository:
    ```bash
-   git clone <repository-link>
+   git clone https://github.com/venkyeswar/Car_Price_Prediction.git
    ```
-2. Navigate to the directory:
-   ```bash
-   cd car-price-prediction
-   ```
-3. Install the dependencies:
+
+2. Install the necessary dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-4. Run the Flask app:
+
+3. Run the Flask application:
    ```bash
    python app.py
    ```
 
-5. Open `http://127.0.0.1:5000/` in your browser.
+4. Open your browser and go to `http://localhost:5000` to access the application.
 
+## Model Files
+
+- `model.pkl`: The trained model for predicting car prices.
+- `scaler.pkl`: The scaler used to transform the input features.
+
+## Conclusion
+
+This car price prediction project demonstrates the use of machine learning models to predict the selling price of used cars based on a few key features. The application provides a simple and intuitive interface for users to enter car details and receive price predictions in real time. With models like Linear Regression, Random Forest, and ANN, the project showcases different approaches to solving regression problems in the field of machine learning.
